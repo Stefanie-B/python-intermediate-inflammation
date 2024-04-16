@@ -32,25 +32,22 @@ def test_daily_max(test, expected):
 
 
 @pytest.mark.parametrize(
-    "test, expected",
+    "test, expected, expect_raises",
     [
-        ([[0, 0], [0, 0], [0, 0]], [0, 0]),
-        ([[1, 2], [3, 4], [5, 6]], [1, 2]),
-        ([[-8, 2, 2], [3, 4, -9], [-4, 5, 6]], [-8, 2, -9])
+        ([[0, 0], [0, 0], [0, 0]], [0, 0], None),
+        ([[1, 2], [3, 4], [5, 6]], [1, 2], None),
+        ([[-8, 2, 2], [3, 4, -9], [-4, 5, 6]], [-8, 2, -9], None),
+        ([['Hello', 'there'], ['General', 'Kenobi']], [], TypeError)
     ])
-def test_daily_min(test, expected):
+def test_daily_min(test, expected, expect_raises):
     """Test that min function works for an array of equal,
     unequal positive and general unequal integers."""
     from inflammation.models import daily_min
-    npt.assert_array_equal(daily_min(np.array(test)), np.array(expected))
-
-
-def test_daily_min_string():
-    """Test for TypeError when passing strings"""
-    from inflammation.models import daily_min
-
-    with pytest.raises(TypeError):
-        error_expected = daily_min([['Hello', 'there'], ['General', 'Kenobi']])
+    if expect_raises is not None:
+        with pytest.raises(expect_raises):
+            npt.assert_array_equal(daily_min(np.array(test)), np.array(expected))
+    else:
+        npt.assert_array_equal(daily_min(np.array(test)), np.array(expected))
 
 
 @pytest.mark.parametrize(
