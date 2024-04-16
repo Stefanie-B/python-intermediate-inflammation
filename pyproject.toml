@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "inflammation"
+version = "1.0.0"
+description = "Analyse patient inflammation data"
+authors = ["Stefanie Brackenhoff <s.a.brackenhoff@rug.nl>"]
+license = "MIT"
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+matplotlib = "^3.8.4"
+numpy = "^1.26.4"
+
+
+[tool.poetry.group.dev.dependencies]
+pylint = "^3.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[project.urls]
+Homepage = "https://github.com/Stefanie-B/python-intermediate-inflammation"
+Issues = "https://github.com/Stefanie-B/python-intermediate-inflammation/issues"
