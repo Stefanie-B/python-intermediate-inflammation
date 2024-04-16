@@ -23,3 +23,13 @@ def visualize(data_dict):
     fig.tight_layout()
 
     plt.show()
+
+
+def print_statistics(data_dict):
+    """Display textual representation of basic statistical properties of the inflammation data.
+
+    :param data_dict: Dictionary of name -> data to plot
+    """
+
+    for i, (name, data) in enumerate(data_dict.items()):
+        print(f'{name}:\t {data}.')

@@ -14,6 +14,8 @@ def main(args):
     - passing data between models and views
     """
     in_files = args.infiles
+    textual = args.textual
+
     if not isinstance(in_files, list):
         in_files = [args.infiles]
 
@@ -26,6 +28,9 @@ def main(args):
             'min': models.daily_min(inflammation_data)
             }
 
+        if textual:
+            views.print_statistics(view_data)
+
         views.visualize(view_data)
 
 
@@ -37,6 +42,11 @@ if __name__ == "__main__":
         'infiles',
         nargs='+',
         help='Input CSV(s) containing inflammation series for each patient')
+
+    parser.add_argument(
+        '--textual', '-t',
+        action='store_true',
+        help='(Optional) Show a textual representation instead of a graphical one.')
 
     args = parser.parse_args()
 
