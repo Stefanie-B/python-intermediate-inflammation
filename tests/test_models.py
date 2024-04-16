@@ -63,6 +63,21 @@ def test_daily_mean_integers():
             [[1, 2, 3], [4, 5, 6], [7, 8, 9]],
             [[0.33, 0.67, 1], [0.67, 0.83, 1], [0.78, 0.89, 1]],
             None,
+        ),
+        (
+            [1, 2, 3],
+            [0.33, 0.67, 1],
+            TypeError,
+        ),
+        (
+            'aardappels',
+            [1],
+            TypeError,
+        ),
+        (
+            [[[1]]],
+            [[[1]]],
+            TypeError
         )
     ])
 def test_patient_normalise(test, expected, expect_raises):
