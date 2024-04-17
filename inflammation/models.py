@@ -15,6 +15,7 @@ def load_csv(filename):
     """Load a Numpy array from a CSV
 
     :param filename: Filename of CSV to load
+    :returns: ndarray
     """
     return np.loadtxt(fname=filename, delimiter=',')
 
@@ -32,7 +33,7 @@ def daily_stddev(data):
     """ Calculate the daily standard deviation of a 2D inflammation data array.
 
     :param data: 2D array of inflammation data with patients across axis 0 and time across axis 1
-    :returns: Mean values measured on each day
+    :returns: standard deviation values measured on each day
     """
     return np.std(data, axis=0)
 
@@ -72,8 +73,11 @@ def patient_normalise(data):
     Normalise patient data from a 2D inflammation data array.
 
     NaN values are ignored, and normalised to 0.
-
+    
     Negative values are rounded to 0.
+
+    :param data: ndarray patient data
+    :return: normalized ndarray, output shape?????
     """
     if not isinstance(data, np.ndarray):
         raise TypeError('Data must be a numpy array')
