@@ -22,3 +22,6 @@ The following optional packages are required to run Inflam's unit tests:
 
 - [pytest](https://docs.pytest.org/en/stable/) - Inflam's unit tests are written using pytest
 - [pytest-cov](https://pypi.org/project/pytest-cov/) - Adds test coverage stats to unit testing
+
+## Installation
+Clone the repository and install by running ```poetry build``` in the directory.
